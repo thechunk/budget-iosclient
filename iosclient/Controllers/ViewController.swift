@@ -8,24 +8,31 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, OAuthManagerDelegate {
     
     let oauthSwift = OAuthManager.sharedManager.oauthSwift
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        OAuthManager.sharedManager.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        performSegue(withIdentifier: "AppToLogin", sender: nil)
         oauthSwift.renewAccessToken(withRefreshToken: OAuthManager.sharedManager.refreshToken, success: { (credentials, _, _) in
             print(credentials.oauthToken)
         }) { (error) in
             print(error.localizedDescription)
         }
+        if (OAuthManager.sharedManager.accessToken.isEmpty) {
+            performSegue(withIdentifier: "AppToLogin", sender: nil)
+        } else {
+            performSegue(withIdentifier: "AppToMain", sender: nil)
+        }
     }
 
+    func authorizeDidComplete() {
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
 
 }
-

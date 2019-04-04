@@ -9,6 +9,10 @@
 import UIKit
 import OAuthSwift
 
+protocol OAuthManagerDelegate: class {
+    func authorizeDidComplete()
+}
+
 class OAuthManager: NSObject {
     static let sharedManager = OAuthManager()
     let oauthSwift = OAuth2Swift(
@@ -21,8 +25,9 @@ class OAuthManager: NSObject {
     )
     var accessToken: String = ""
     var refreshToken: String = ""
+    weak var delegate: OAuthManagerDelegate?
     
-    override init() {
+    private override init() {
         super.init()
         oauthSwift.allowMissingStateCheck = true
     }
@@ -34,8 +39,10 @@ class OAuthManager: NSObject {
             scope: "read+user_info",
             state: "",
             success: { credential, response, parameters in
+                // TODO: store to persistent
                 OAuthManager.sharedManager.accessToken = credential.oauthToken
                 OAuthManager.sharedManager.refreshToken = credential.oauthRefreshToken
+                self.delegate?.authorizeDidComplete()
             }, failure: {
                 error in print(error.localizedDescription)
             }

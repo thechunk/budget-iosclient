@@ -19,6 +19,7 @@
 		565072BE224A774B000F43DF /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 565072BD224A774B000F43DF /* OAuthSwift.framework */; };
 		565072BF224A774B000F43DF /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 565072BD224A774B000F43DF /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		565072C3224A7BFD000F43DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565072C2224A7BFD000F43DF /* LoginViewController.swift */; };
+		5678CD33225663DF00205A62 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678CD32225663DF00205A62 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		565072B9224A7743000F43DF /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		565072BD224A774B000F43DF /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		565072C2224A7BFD000F43DF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5678CD32225663DF00205A62 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 			children = (
 				56507287224A714F000F43DF /* ViewController.swift */,
 				565072C2224A7BFD000F43DF /* LoginViewController.swift */,
+				5678CD32225663DF00205A62 /* MainViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				56100840224BC0A40093D419 /* OAuthManager.swift in Sources */,
 				565072C3224A7BFD000F43DF /* LoginViewController.swift in Sources */,
 				56507288224A714F000F43DF /* ViewController.swift in Sources */,
+				5678CD33225663DF00205A62 /* MainViewController.swift in Sources */,
 				56507286224A714F000F43DF /* AppDelegate.swift in Sources */,
 				5650728E224A714F000F43DF /* iosclient.xcdatamodeld in Sources */,
 			);
