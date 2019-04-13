@@ -36,12 +36,13 @@ class OAuthManager: NSObject {
         oauthSwift.authorizeURLHandler = SafariURLHandler(viewController: sender, oauthSwift: oauthSwift)
         oauthSwift.authorize(
             withCallbackURL: URL(string: "rcbudget://oauth")!,
-            scope: "read+user_info",
+            scope: "read+write+user_info",
             state: "",
             success: { credential, response, parameters in
                 // TODO: store to persistent
                 OAuthManager.sharedManager.accessToken = credential.oauthToken
                 OAuthManager.sharedManager.refreshToken = credential.oauthRefreshToken
+                print(credential.oauthToken)
                 self.delegate?.authorizeDidComplete()
             }, failure: {
                 error in print(error.localizedDescription)
