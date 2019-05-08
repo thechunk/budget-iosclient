@@ -22,8 +22,14 @@ class ViewController: UIViewController, OAuthManagerDelegate {
         oauthSwift.renewAccessToken(withRefreshToken: OAuthManager.sharedManager.refreshToken, success: { (credentials, _, _) in
             print(credentials.oauthToken)
         }) { (error) in
-            print(error.localizedDescription)
+            print(error)
         }
+        oauthSwift.client.get("http://localhost:8080/me", success: { (response) in
+            print(response)
+        }) { (error) in
+            print(error)
+        }
+
         if (OAuthManager.sharedManager.accessToken.isEmpty) {
             performSegue(withIdentifier: "AppToLogin", sender: nil)
         } else {

@@ -23,10 +23,15 @@ class MainViewController: UIViewController {
     
     @IBAction func submitButton(_ sender: Any) {
         let data: [String : Any] = [
-            "description": descriptionField.text ?? "",
-            "amount": amountField.text ?? "",
-            "paymentMethod": "credit",
-            "category": "groceries"
+            "record": [
+                "description": descriptionField.text ?? "",
+                "amount": [
+                    "currency": "HKD",
+                    "value": Int(amountField.text ?? "0"),
+                ],
+                "paymentMethod": "credit",
+                "category": "groceries"
+            ]
         ]
 
         let _ = oauthSwift.client.post(

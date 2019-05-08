@@ -36,7 +36,7 @@ class OAuthManager: NSObject {
         oauthSwift.authorizeURLHandler = SafariURLHandler(viewController: sender, oauthSwift: oauthSwift)
         oauthSwift.authorize(
             withCallbackURL: URL(string: "rcbudget://oauth")!,
-            scope: "read+write+user_info",
+            scope: "read+write",
             state: "",
             success: { credential, response, parameters in
                 // TODO: store to persistent
