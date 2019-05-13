@@ -24,8 +24,14 @@ class ViewController: UIViewController, OAuthManagerDelegate {
         }) { (error) in
             print(error)
         }
-        oauthSwift.client.get("http://localhost:8080/me", success: { (response) in
-            print(response)
+        let _ = oauthSwift.client.get("http://localhost:8080/me", success: { (response) in
+            do {
+                let json = try response.jsonObject() as? [String: Any]
+                let tokens = json?["tokens"] as? [String: String];
+                OAuthManager.sharedManager.googleAccessToken = tokens?["google"] ?? ""
+            } catch let e {
+                print(e)
+            }
         }) { (error) in
             print(error)
         }

@@ -25,6 +25,7 @@ class OAuthManager: NSObject {
     )
     var accessToken: String = ""
     var refreshToken: String = ""
+    var googleAccessToken: String = ""
     weak var delegate: OAuthManagerDelegate?
     
     private override init() {

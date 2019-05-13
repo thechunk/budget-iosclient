@@ -27,10 +27,13 @@ class MainViewController: UIViewController {
                 "description": descriptionField.text ?? "",
                 "amount": [
                     "currency": "HKD",
-                    "value": Int(amountField.text ?? "0"),
+                    "value": Int(amountField.text ?? "0") ?? 0,
                 ],
                 "paymentMethod": "credit",
                 "category": "groceries"
+            ],
+            "tokens": [
+                "google": OAuthManager.sharedManager.googleAccessToken
             ]
         ]
 
